@@ -8,7 +8,7 @@ process BUNDLE_AVERAGE {
         'scilus/scilus:1.6.0' }"
 
     input:
-        tuple val(meta), path(bundles), path(centroids_dir)
+        path(bundles), path(centroids_dir)
 
     output:
         tuple val(meta), path("*_average_density_mni.nii.gz"), emit: average_density_mni, optional: true
