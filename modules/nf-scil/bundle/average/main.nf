@@ -11,8 +11,8 @@ process BUNDLE_AVERAGE {
         tuple val(meta), path(bundles), path(centroids_dir)
 
     output:
-        tuple val(meta), path("*_average_density_mni.nii.gz"), emit: average_density_mni, optional true
-        tuple val(meta), path("*_average_binary_mni.nii.gz"), emit: average_binary_mni, optional true
+        tuple val(meta), path("*_average_density_mni.nii.gz"), emit: average_density_mni, optional: true
+        tuple val(meta), path("*_average_binary_mni.nii.gz"), emit: average_binary_mni, optional: true
         path "versions.yml"           , emit: versions
 
     when:
