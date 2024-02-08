@@ -1,0 +1,54 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "bundle_average"
+description: Compute an average volume of all recognized bundles by averaging the density and binary versions of each bundle
+keywords:
+  - Bundle
+  - Average
+  - Template
+tools:
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - bundles:
+      type: file
+      description: Trk of each recognized bundle
+      pattern: "*.{trk,tck}"
+
+  - centroids_dir:
+      type: folder
+      description: Path to folder containing centroids of each model used by RecoBundle
+      pattern: "*centroids*"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - average_density_mni:
+      type: file
+      description: Nifti volume with streamline density of each bundle in MNI space
+      pattern: "*.{nii,nii.gz}"
+
+  - average_binary_mni:
+      type: file
+      description: Nifti binary volume of each bundle in MNI space
+      pattern: "*.{nii,nii.gz}"
+
+authors:
+  - "@mdesco"
